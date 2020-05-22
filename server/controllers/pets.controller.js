@@ -22,7 +22,7 @@ module.exports.deletePet=(req, res)=>{
 };
 
 module.exports.updatePet=(req, res)=>{
-    Pet.findByIdAndUpdate({_id:req.params.id}, req.body, {new:true, runValidators: true})
+    Pet.findByIdAndUpdate({_id:req.params.id}, req.body, {new:true, runValidators: true, context: 'query'})
         .then(updatedPet => res.json(updatedPet))
         .catch(err => res.json(err));
 
